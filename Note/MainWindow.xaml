@@ -5,8 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Note"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="Notepad" Height="450" Width="800"
+        x:Name="window">
+
+        <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_New" Click="New_MenuItem" InputGestureText="Ctrl+N" />
+                <MenuItem Header="_Open" Click="Open_MenuItem" InputGestureText="Ctrl+O" />
+                <MenuItem Header="_Save" Click="Save_MenuItem" InputGestureText="Ctrl+S" />
+                <MenuItem Header="_Save as" InputGestureText="Ctrl+S" Click="Save_us_MenuItem" />
+                <Separator />
+                <MenuItem Header="_Exit" Click="Exit_MenuItem" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut" Command="Cut" InputGestureText="Ctrl+X" />
+                <MenuItem Header="_Copy" Command="Copy" InputGestureText="Ctrl+C" />
+                <MenuItem Header="_Paste" Command="Paste" InputGestureText="Ctrl+V" />
+            </MenuItem>
+            <MenuItem Header="_Format">
+                <MenuItem Header="_Font" Click="Font_MenuItem" />
+                <MenuItem Header="Word wrap" x:Name="Wrap_text" IsCheckable="True" IsChecked="False" Checked="Wrap_MenuItem"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_Information">
+                    <MenuItem Header="_About program" Click="About_MenuItemk"/>
+                    <MenuItem Header="_Welcome to blog" Click="Blog_MenuItem"/>
+                </MenuItem>
+            </MenuItem>
+        </Menu>
+        <TextBlock DockPanel.Dock="Bottom" x:Name="statusBar" Text="Ln 0, Col 0"/>
+        <TextBox x:Name="txtDocument" DockPanel.Dock="Top" IsKeyboardFocusWithinChanged="txtDocument_IsKeyboardFocusWithinChanged"
+                 KeyDown="txtDocument_KeyDown"
+                 AcceptsReturn="True" AcceptsTab="True"
+                 VerticalScrollBarVisibility="Auto"
+                 HorizontalScrollBarVisibility="Auto">
+        </TextBox>
+    </DockPanel>
 </Window>
